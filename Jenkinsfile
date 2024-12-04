@@ -5,7 +5,7 @@ pipeline {
     }
     stages {
         stage("Code") {
-            agent { label params.ENVIRONMENT == 'UAT' ? 'uat-agent' : 'prod-agent' }
+            agent { label params.ENVIRONMENT == 'UAT' ? 'vinod' : 'prod' }
             steps {
                 echo "This is Cloning"
                 git url: "https://github.com/onkar717/dotnet-hello-world.git", branch: "main"
@@ -13,20 +13,20 @@ pipeline {
             }
         }
         stage("Build") {
-            agent { label params.ENVIRONMENT == 'UAT' ? 'uat-agent' : 'prod-agent' }
+            agent { label params.ENVIRONMENT == 'UAT' ? 'vinod' : 'prod' }
             steps {
                 echo "This is Building"
                 sh "docker build -t dotnetapp:latest ."
             }
         }
         stage("Test") {
-            agent { label params.ENVIRONMENT == 'UAT' ? 'uat-agent' : 'prod-agent' }
+            agent { label params.ENVIRONMENT == 'UAT' ? 'vinod' : 'prod' }
             steps {
                 echo "This is Test"
             }
         }
         stage("Push to Docker Hub") {
-            agent { label params.ENVIRONMENT == 'UAT' ? 'uat-agent' : 'prod-agent' }
+            agent { label params.ENVIRONMENT == 'UAT' ? 'vinod' : 'prod' }
             steps {
                 echo "This is Pushing to Docker Hub"
                 withCredentials([usernamePassword(credentialsId: "dockerHubCred", passwordVariable: "dockerHubPass", usernameVariable: "dockerHubUser")]) {
@@ -42,7 +42,7 @@ pipeline {
             }
         }
         stage("Deploy") {
-            agent { label params.ENVIRONMENT == 'UAT' ? 'uat-agent' : 'prod-agent' }
+            agent { label params.ENVIRONMENT == 'UAT' ? 'vinod' : 'prod' }
             steps {
                 echo "Deploying to ${params.ENVIRONMENT.toUpperCase()} environment..."
                 sh """
