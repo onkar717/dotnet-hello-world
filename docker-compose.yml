@@ -1,8 +1,7 @@
-version : '3.8'
-services :
-  web :
+version: '3.8'
+services:
+  web:
     build:
       context: .
-    ports :
-      - "8080:8080"
-
+    ports:
+      - "8080:80"  # Binding port 8080 on host to port 80 inside the container
