@@ -1,5 +1,5 @@
 pipeline{
-    agent { label "vinod" }
+    agent {label "${params.ENVIRONMENT == 'vinod' ? 'vinod' : 'production'}"}
     stages{
         stage("Code"){
             steps{
