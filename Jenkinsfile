@@ -45,9 +45,7 @@ pipeline {
             agent { label params.ENVIRONMENT == 'UAT' ? 'vinod' : 'prod' }
             steps {
                 echo "Deploying to ${params.ENVIRONMENT.toUpperCase()} environment..."
-                sh """
-                docker-compose down && docker-compose up -d
-                """
+                sh "docker compose down && docker compose up -d"
                 echo "Deployment Completed for ${params.ENVIRONMENT.toUpperCase()}"
             }
         }
