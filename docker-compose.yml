@@ -1,7 +1,6 @@
-version: '3.8'
-services:
-  web:
-    build:
-      context: .
-    ports:
+version : '3.8'
+services :
+  web :
+     image: "onkar4545/dotnetapp"
+    ports :
       - "8080:80"  # Binding port 8080 on host to port 80 inside the container
