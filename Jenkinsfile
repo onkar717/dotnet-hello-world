@@ -46,8 +46,7 @@ pipeline {
             steps {
                 echo "Deploying to ${params.ENVIRONMENT.toUpperCase()} environment..."
                 sh """
-                docker-compose down
-                docker-compose up -d
+                docker-compose down && docker-compose up -d
                 """
                 echo "Deployment Completed for ${params.ENVIRONMENT.toUpperCase()}"
             }
