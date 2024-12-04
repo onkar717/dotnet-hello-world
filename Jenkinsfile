@@ -5,7 +5,7 @@ pipeline {
         DOCKER_IMAGE = 'dotnetapp'
         DOCKER_TAG = 'latest'
         REPOSITORY = 'onkar717/dotnet-hello-world'
-        EC2_IP = '<EC2_INSTANCE_IP>'  // Replace with your EC2 instance IP
+        EC2_IP = '13.51.200.220'  // Replace with your EC2 instance IP
         EC2_USER = 'ec2-user'  // Replace with your EC2 user (could be 'ubuntu' or 'ec2-user')
     }
 
